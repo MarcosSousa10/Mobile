@@ -14,7 +14,7 @@ interface ButtonProps extends TouchableOpacityProps {
   onPress?: () => void;
 }
 const Button = ({ title, type, loading, disabled, margin, onPress, ...props }: ButtonProps) => {
-  const handleOnPress =()=>{
+  const handleOnPress = ()=>{
     if (!loading && !disabled && onPress){
       onPress();
     }
@@ -22,7 +22,7 @@ const Button = ({ title, type, loading, disabled, margin, onPress, ...props }: B
   const renderText = (color: string | undefined) => {
     return (
       <>
-        <Text type={textTypes.BUTTON_BOLD} color={color}>
+        <Text type={textTypes.BUTTON_SEMI_BOLD} color={color}>
           {title}
         </Text >
         {loading && <ActivityIndicatorButton  color={theme.colors.neutraTheme.white} />}
