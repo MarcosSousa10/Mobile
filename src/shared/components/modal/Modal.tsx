@@ -3,10 +3,13 @@ import {
   Alert,
   ModalProps as ModalPropsReact,
   Modal as ModalReact,
-  Pressable,
   View,
 } from 'react-native';
 import Text from '../text/Text';
+import { ContainerModal, IconCloseModal } from './Modal.style';
+import { theme } from '../../themes/theme';
+import { textTypes } from '../text/textTypes';
+import Button from '../button/Button';
 interface ModalProps extends ModalPropsReact {
   title: string;
   text: string;
@@ -23,16 +26,14 @@ const Modal = ({title, text, onCloseModal, ...props}: ModalProps) => {
         onCloseModal();
       }}
       {...props}>
-      <View>
+      <ContainerModal>
+        <Text type={textTypes.PARAGRAPH_SEMI_BOLD} color={theme.colors.mainTheme.primary} customMargin='16px'>{title}</Text>
+        <IconCloseModal onPress={onCloseModal} name='cross'/>
         <View>
-          <Text>{title}</Text>
           <Text>{text}</Text>
-          <Pressable
-            onPress={onCloseModal}>
-            <Text>Hide Model</Text>
-          </Pressable>
+          <Button title='OK' onPress={onCloseModal}/>
         </View>
-      </View>
+      </ContainerModal>
     </ModalReact>
   );
 };

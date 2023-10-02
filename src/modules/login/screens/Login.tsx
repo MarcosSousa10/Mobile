@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { View } from 'react-native';
-import { ContainerLogin } from '../styles/login.styles';
+import { ContainerLogin, Imagelog } from '../styles/login.styles';
 import Input from '../../../shared/components/input/input';
 import Button from '../../../shared/components/button/Button';
 import { theme } from '../../../shared/themes/theme';
@@ -11,6 +11,7 @@ const Login = () => {
   return (
     <View>
       <ContainerLogin>
+        <Imagelog resizeMode="center" source={require("../../../assets/images/download.png")}/>
         <Input 
         margin='0px 0px 8px 0px'
         title='Email:' 

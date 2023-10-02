@@ -9,3 +9,9 @@ export const ContainerLogin = styled.View`
   align-items: center;
   padding: 16px;
 `;
+
+export const Imagelog = styled.Image`
+  width: 100px;
+  height: 100px;
+  margin-bottom: 24px;
+`;
