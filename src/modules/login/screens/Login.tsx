@@ -1,13 +1,14 @@
-/* eslint-disable prettier/prettier */
-import { View } from 'react-native';
-import { ContainerLogin, Imagelog } from '../styles/login.styles';
+/* eslint-disable prettier/prettier *//* eslint-disable react/react-in-jsx-scope */
+import {View} from 'react-native';
+import {ContainerLogin, Imagelog} from '../styles/login.styles';
 import Input from '../../../shared/components/input/input';
 import Button from '../../../shared/components/button/Button';
-import { theme } from '../../../shared/themes/theme';
-import { useLogin } from '../hooks/useLogin';
+import {theme} from '../../../shared/themes/theme';
+import {useLogin} from '../hooks/useLogin';
 
 const Login = () => {
-  const { email,
+  const {
+    email,
     password,
     loading,
     errorMessage,
@@ -45,7 +46,6 @@ const Login = () => {
           margin="16px"
           title="ENTRAR"
           onPress={handleOnPress}
-
         />
       </ContainerLogin>
     </View>

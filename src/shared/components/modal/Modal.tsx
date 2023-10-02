@@ -1,4 +1,5 @@
-/* eslint-disable prettier/prettier */
+/* eslint-disable prettier/prettier *//* eslint-disable react/react-in-jsx-scope */
+
 import {
   Alert,
   ModalProps as ModalPropsReact,
@@ -27,11 +28,11 @@ const Modal = ({title, text, onCloseModal, ...props}: ModalProps) => {
       }}
       {...props}>
       <ContainerModal>
-        <Text type={textTypes.PARAGRAPH_SEMI_BOLD} color={theme.colors.mainTheme.primary} customMargin='16px'>{title}</Text>
-        <IconCloseModal onPress={onCloseModal} name='cross'/>
+        <Text type={textTypes.PARAGRAPH_SEMI_BOLD} color={theme.colors.mainTheme.primary} customMargin="16px">{title}</Text>
+        <IconCloseModal onPress={onCloseModal} name="cross"/>
         <View>
           <Text>{text}</Text>
-          <Button title='OK' onPress={onCloseModal}/>
+          <Button title="OK" onPress={onCloseModal}/>
         </View>
       </ContainerModal>
     </ModalReact>

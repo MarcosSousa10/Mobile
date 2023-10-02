@@ -1,26 +1,19 @@
 /* eslint-disable prettier/prettier */
-import axios from 'axios';
 import {
   NativeSyntheticEvent,
   TextInputChangeEventData,
 } from 'react-native';
-import {useState} from 'react';
+import { useState} from 'react';
+import { useRequest } from '../../../shared/hooks/useRequest';
 export const useLogin = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>('');
+const {authRequest,errorMessage, loading, user, setErrorMessage }= useRequest();
   const handleOnPress = async () => {
-    setLoading(true);
-     await axios
-      .post('http://192.168.2.181:8080/auth', {
-        email,
-        password,
-      })
-      .catch(() => {
-        setErrorMessage('Usuario ou senha invalidos');
-      });
-    setLoading(false);
+ authRequest({
+    email,
+    password,
+ });
   };
   const handleOnChangeEmail = (
     event: NativeSyntheticEvent<TextInputChangeEventData>,
