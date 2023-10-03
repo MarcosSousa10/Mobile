@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier *//* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react-hooks/exhaustive-deps *//* eslint-disable prettier/prettier *//* eslint-disable react/react-in-jsx-scope */
 import {View} from 'react-native';
 import {ContainerLogin, Imagelog} from '../styles/login.styles';
 import Input from '../../../shared/components/input/input';
@@ -16,6 +16,7 @@ const Login = () => {
     handleOnChangeEmail,
     handleOnChangePassword,
   } = useLogin();
+
 
   return (
     <View>
