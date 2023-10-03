@@ -6,7 +6,7 @@ import metroConfig from '../../../../metro.config';
 export type MetgoType = 'get' | 'post' | 'put' | 'patch' | 'delete';
 
 export default class ConnectionAPI {
-    static async call<T >(url: string, method: MetgoType, body?: unknown): Promise<T> {
+    static async call<T>(url: string, method: MetgoType, body?: unknown): Promise<T> {
         switch (method) {
             case MethodEnum.DELETE:
             case MethodEnum.GET:

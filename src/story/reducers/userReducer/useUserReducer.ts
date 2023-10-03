@@ -1,7 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {useDispatch
-
-} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../hooks';
 import {UserType} from '../../../shared/types/userType';
 import {setUserAction} from '.';

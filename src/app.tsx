@@ -1,16 +1,25 @@
 /* eslint-disable prettier/prettier *//* eslint-disable react/react-in-jsx-scope */
-import { SafeAreaView } from 'react-native';
 
 import Login from './modules/login';
 import { Provider } from 'react-redux';
 import story from './story';
+import GlobalModal from './shared/components/modal/globalModal/GlobalModal';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from './modules/home';
+import { MenuUrl } from './shared/enums/MenuUrl.wnum';
+const Stack = createNativeStackNavigator();
 const App = () => {
 
   return (
     <Provider store={story}>
-      <SafeAreaView>
-        <Login />
-      </SafeAreaView>
+      <GlobalModal/>
+      <NavigationContainer>
+        <Stack.Navigator>
+        <Stack.Screen name={MenuUrl.LOGIN} component={Login} />
+        <Stack.Screen name={MenuUrl.HOME} component={Home} options={{title: 'Home'}}/>
+        </Stack.Navigator>
+        </NavigationContainer>
     </Provider>
 
   );
