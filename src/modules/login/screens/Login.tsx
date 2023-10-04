@@ -5,8 +5,16 @@ import Input from '../../../shared/components/input/input';
 import Button from '../../../shared/components/button/Button';
 import {theme} from '../../../shared/themes/theme';
 import {useLogin} from '../hooks/useLogin';
+import { useEffect } from 'react';
+import { connectionAPIGet } from '../../../shared/functions/connection/connectionAPI';
+import { URL_USER } from '../../../shared/constants/urls';
+import { UserType } from '../../../shared/types/userType';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { MenuUrl } from '../../../shared/enums/MenuUrl.wnum';
 
 const Login = () => {
+   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const {
     email,
     password,
@@ -16,13 +24,22 @@ const Login = () => {
     handleOnChangeEmail,
     handleOnChangePassword,
   } = useLogin();
-
+ useEffect(() => {
+  const text = async () =>{
+    const result = await connectionAPIGet<UserType>(URL_USER).catch(()=> undefined);
+    console.log(result);
+    if (result){
+      navigation.navigate(MenuUrl.HOME);
+    }
+  }
+  text();
+ }, []);
 
   return (
     <View>
       <ContainerLogin>
         <Imagelog
-          resizeMode="center"
+          resizeMode="contain"
           source={require('../../../assets/images/download.png')}
         />
         <Input
