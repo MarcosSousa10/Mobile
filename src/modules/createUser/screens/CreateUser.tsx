@@ -5,7 +5,7 @@ import { useCreateUser } from '../hooks/useCreateUser';
 import { CreateUserContainer } from '../styles/createUser.style';
 
 const CreateUser = () => {
-    const {createUser, loading, handleOnChangeInput, handleCreateUser,} = useCreateUser();
+    const {createUser,disabled, loading, handleOnChangeInput, handleCreateUser,} = useCreateUser();
     return (
         <CreateUserContainer>
             <Input
@@ -51,6 +51,7 @@ const CreateUser = () => {
               title="Confirme senha :"
             />
             <Button
+              disabled={disabled}
               onPress={handleCreateUser}
               loading={loading}
               margin="0px 0px 32px 0px" 
