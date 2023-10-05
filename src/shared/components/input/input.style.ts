@@ -21,4 +21,4 @@ export const IconEye = styled(Icon)`
 position: absolute;
 right: 16px;
 top: 12px
-`
+`;
