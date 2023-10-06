@@ -1,11 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope *//* eslint-disable prettier/prettier */
-import { NativeSyntheticEvent, TextInputChangeEventData, TextInputProps, View } from 'react-native';
+import { NativeSyntheticEvent, TextInput, TextInputChangeEventData, TextInputProps, View } from 'react-native';
 import { ContainerInput, IconEye } from './input.style';
 import { DisplayFlexColumn } from '../globalStyles/globalView.style';
 import Text from '../text/Text';
 import { textTypes } from '../text/textTypes';
 import { theme } from '../../themes/theme';
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { insertMaskInCpf } from '../../functions/cpf';
 import { insertMaskInPhone } from '../../functions/phone';
 // type InputProps = TextInputProps;
@@ -16,7 +16,7 @@ interface InputProps extends TextInputProps {
   margin?: string;
   type?: 'cel-phone'| 'cpf';
 }
-const Input = ({margin, secureTextEntry, title, errorMessage, onChange, type, ...props }: InputProps) => {
+  const Input = forwardRef<TextInput,InputProps>(({margin, secureTextEntry, title, errorMessage, onChange, type, ...props }: InputProps, ref) => {
   const [currentSecure, setCurrentSecure] = useState<boolean>(!!secureTextEntry);
   const handleOnChange = (event: NativeSyntheticEvent<TextInputChangeEventData>)=>{
     if (onChange){
@@ -64,6 +64,7 @@ const handleOnPressEye = () => {
         isError={!!errorMessage}
         {...props}
         onChange={handleOnChange}
+        ref={ref}
          />
         {secureTextEntry && <IconEye onPress={handleOnPressEye} name={currentSecure ? 'eye' : 'eye-blocked'} size={20} />}
 
@@ -80,5 +81,5 @@ const handleOnPressEye = () => {
       )}
     </DisplayFlexColumn>
   );
-};
+});
 export default Input;
