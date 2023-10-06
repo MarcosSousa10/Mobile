@@ -60,6 +60,7 @@ const Login = () => {
           title="Senha:"
           onChange={handleOnChangePassword}
           placeholder="Digite sua senha"
+          
         />
         <TouchableOpacity onPress={handleGoToCreateUser}>
             <Text

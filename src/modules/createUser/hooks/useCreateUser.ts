@@ -7,8 +7,11 @@ import { URL_USER } from '../../../shared/constants/urls';
 import { MethodEnum } from '../../../enums/methods.enum';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { MenuUrl } from '../../../shared/enums/MenuUrl.wnum';
-import { insertMaskInCpf } from '../../../shared/functions/cpf';
-import { insertMaskInPhone } from '../../../shared/functions/phone';
+import { validateCpf } from '../../../shared/functions/cpf';
+import { validatePhone } from '../../../shared/functions/phone';
+import { validateEmail } from '../../../shared/functions/email';
+import { removeSpacialCharacters } from '../../../shared/functions/caracteres';
+
 
 export const useCreateUser = () => {
   const { reset } = useNavigation<NavigationProp<ParamListBase>>();
@@ -27,6 +30,9 @@ export const useCreateUser = () => {
         createUser.name !== '' &&
         createUser.password === createUser.confirmPassword &&
         createUser.cpf !== '' &&
+        validateCpf( createUser.cpf ) &&
+        validatePhone(createUser.phone) &&
+        validateEmail(createUser.email) &&
         createUser.email !== '' &&
         createUser.password !== '' &&
         createUser.phone !== ''
@@ -40,7 +46,11 @@ export const useCreateUser = () => {
     const resultCreateUser = await request({
         url: URL_USER,
         method: MethodEnum.POST,
-        body:createUser,
+        body:{
+            ...createUser,
+            phone: removeSpacialCharacters(createUser.phone),
+            cpf: removeSpacialCharacters(createUser.cpf),
+        },
         message: 'Usuario cadastrado com sucesso!',
     });
     if (resultCreateUser){
@@ -51,21 +61,9 @@ export const useCreateUser = () => {
     }
   };
   const handleOnChangeInput = ( event: NativeSyntheticEvent<TextInputChangeEventData>, name: string)=>{
-    let text = event.nativeEvent.text;;
-    switch (name) {
-        case 'cpf':
-            text = insertMaskInCpf(text);
-            break;
-        case 'phone':
-            text = insertMaskInPhone(text);
-            break;
-        default:
-            text = event.nativeEvent.text;
-            break;
-    }
     setCreateUser((currentCreateUser) =>({
       ...currentCreateUser,
-      [name]: text,
+      [name]: event.nativeEvent.text,
 }));
   };
   return {
