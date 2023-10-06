@@ -24,7 +24,7 @@ console.log('user: ', user);
   };
   const handleGoToCreateUser = ()=>{
     navigation.navigate(MenuUrl.CREATE_USER);
-  }
+  };
   const handleOnChangeEmail = (
     event: NativeSyntheticEvent<TextInputChangeEventData>,
   ) => {

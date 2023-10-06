@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+/* eslint-disable react/react-in-jsx-scope *//* eslint-disable prettier/prettier */
 import { NativeSyntheticEvent, TextInputChangeEventData, TextInputProps, View } from 'react-native';
 import { ContainerInput, IconEye } from './input.style';
 import { DisplayFlexColumn } from '../globalStyles/globalView.style';
@@ -45,12 +45,12 @@ const Input = ({margin, secureTextEntry, title, errorMessage, onChange, type, ..
 
 const handleOnPressEye = () => {
   setCurrentSecure((current)=>!current);
-}
+};
   return (
     <DisplayFlexColumn customMargin={margin}>
       {title && (
         <Text
-          customMargin='0px 0px 4px 8px'
+          customMargin="0px 0px 4px 8px"
           color={theme.colors.grayTheme.gray100}
           type={textTypes.PARAGRAPH_SMALL_SEMI_BOLD}
         >
@@ -58,20 +58,20 @@ const handleOnPressEye = () => {
         </Text>
       )}
       <View>
-        <ContainerInput 
+        <ContainerInput
         hasSecureTextEntry={secureTextEntry}
-        secureTextEntry={currentSecure} 
+        secureTextEntry={currentSecure}
         isError={!!errorMessage}
         {...props}
         onChange={handleOnChange}
-         /> 
-        {secureTextEntry && <IconEye onPress={handleOnPressEye} name={currentSecure ? "eye" : "eye-blocked"} size={20} />}
-        
+         />
+        {secureTextEntry && <IconEye onPress={handleOnPressEye} name={currentSecure ? 'eye' : 'eye-blocked'} size={20} />}
+
       </View>
 
       {errorMessage && (
         <Text
-          customMargin='0px 0px 0px 8px'
+          customMargin="0px 0px 0px 8px"
           color={theme.colors.orangeTheme.orange80}
           type={textTypes.PARAGRAPH_SMALL_SEMI_BOLD}
         >

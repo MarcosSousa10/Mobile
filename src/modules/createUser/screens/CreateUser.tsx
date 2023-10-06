@@ -1,11 +1,11 @@
-/* eslint-disable prettier/prettier */
+/* eslint-disable react/react-in-jsx-scope *//* eslint-disable prettier/prettier */
 import Button from '../../../shared/components/button/Button';
 import Input from '../../../shared/components/input/input';
 import { useCreateUser } from '../hooks/useCreateUser';
 import { CreateUserContainer } from '../styles/createUser.style';
 
 const CreateUser = () => {
-    const {createUser,disabled, loading, handleOnChangeInput, handleCreateUser,} = useCreateUser();
+    const {createUser,disabled, loading, handleOnChangeInput, handleCreateUser} = useCreateUser();
     return (
         <CreateUserContainer>
             <Input
@@ -19,38 +19,38 @@ const CreateUser = () => {
               value={createUser.phone}
               onChange={(event)=>handleOnChangeInput(event, 'phone')}
               margin="0px 0px 16px 0px"
-              placeholder="Digite" 
-              type='cel-phone'
+              placeholder="Digite"
+              type="cel-phone"
               title="Telefone :"
             />
             <Input
               value={createUser.email}
               onChange={(event)=>handleOnChangeInput(event, 'email')}
-              margin="0px 0px 16px 0px" 
-              placeholder="Digite" 
+              margin="0px 0px 16px 0px"
+              placeholder="Digite"
               title="Email :"
             />
             <Input
               value={createUser.cpf}
               onChange={(event)=>handleOnChangeInput(event, 'cpf')}
-              margin="0px 0px 16px 0px" 
-              placeholder="Digite" 
-              type='cpf'
+              margin="0px 0px 16px 0px"
+              placeholder="Digite"
+              type="cpf"
               title="CPF :"
               />
             <Input
               value={createUser.password}
               onChange={(event)=>handleOnChangeInput(event, 'password')}
-              margin="0px 0px 16px 0px" 
-              placeholder="Digite" 
+              margin="0px 0px 16px 0px"
+              placeholder="Digite"
               title="Senha :"
               secureTextEntry
             />
             <Input
               value={createUser.confirmPassword}
               onChange={(event)=>handleOnChangeInput(event, 'confirmPassword')}
-              margin="0px 0px 16px 0px" 
-              placeholder="Digite" 
+              margin="0px 0px 16px 0px"
+              placeholder="Digite"
               title="Confirme senha :"
               secureTextEntry
             />
@@ -58,7 +58,7 @@ const CreateUser = () => {
               disabled={disabled}
               onPress={handleCreateUser}
               loading={loading}
-              margin="0px 0px 32px 0px" 
+              margin="0px 0px 32px 0px"
               title="Criar usúario"
             />
         </CreateUserContainer>

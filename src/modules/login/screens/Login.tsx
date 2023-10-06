@@ -34,7 +34,7 @@ const Login = () => {
     if (result){
       navigation.navigate(MenuUrl.HOME);
     }
-  }
+  };
   text();
  }, []);
 
@@ -60,7 +60,7 @@ const Login = () => {
           title="Senha:"
           onChange={handleOnChangePassword}
           placeholder="Digite sua senha"
-          
+
         />
         <TouchableOpacity onPress={handleGoToCreateUser}>
             <Text

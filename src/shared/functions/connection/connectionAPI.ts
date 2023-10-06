@@ -1,7 +1,6 @@
-/* eslint-disable prettier/prettier *//* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-fallthrough *//* eslint-disable prettier/prettier */
 import axios, { AxiosRequestConfig } from 'axios';
 import { MethodEnum } from '../../../enums/methods.enum';
-import metroConfig from '../../../../metro.config';
 import { getAuthorizationToken } from './auth';
 
 export type MetgoType = 'get' | 'post' | 'put' | 'patch' | 'delete';
@@ -9,7 +8,7 @@ export type MetgoType = 'get' | 'post' | 'put' | 'patch' | 'delete';
 export default class ConnectionAPI {
     static async call<T>(url: string, method: MetgoType, body?: unknown): Promise<T> {
         const token = await getAuthorizationToken();
-        const config : AxiosRequestConfig={
+        const config : AxiosRequestConfig = {
             headers: {
                 Authorization: token,
                 'Content-Type': 'application/json',
