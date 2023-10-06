@@ -7,5 +7,6 @@ export enum MenuUrl {
   CREATE_USER = 'CreateUser',
   SPLASH = 'Splash',
   PRODUCT = 'Product',
+  CART = 'Cart',
 
 }
