@@ -4,11 +4,11 @@ export const grayTheme = {
   gray100: '#929898',
 };
 export const neutraTheme = {
-  white: '#FFFFFF',
+  white: '#ffffff',
   black: '#262824',
 };
 export const mainTheme = {
-  primary: '#8C2980',
+  primary: '#8C29B0',
 };
 export const pinkTheme = {
   pink80: '#C833DB',
