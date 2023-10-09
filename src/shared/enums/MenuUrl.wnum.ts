@@ -8,5 +8,6 @@ export enum MenuUrl {
   SPLASH = 'Splash',
   PRODUCT = 'Product',
   CART = 'Cart',
+  SEARCH_PRODUCT = 'SearchProduct',
 
 }

@@ -10,3 +10,7 @@ export const DisplayFlexColumn = styled.View<DisplayProps>`
   margin: ${(props: { customMargin: any; }) => props.customMargin ? props.customMargin : '0px'};
 `;
 
+export const  FlexBetweenRow = styled.View`
+flex-direction: row;
+justify-content: space-between;
+`;
