@@ -6,7 +6,7 @@ import { getAuthorizationToken } from './auth';
 export type MetgoType = 'get' | 'post' | 'put' | 'patch' | 'delete';
 
 export default class ConnectionAPI {
-    static async call<T>(url: string, method: MetgoType, body?: unknown): Promise<T> {
+    static async call<T, B = unknown>(url: string, method: MetgoType, body?: B): Promise<T> {
         const token = await getAuthorizationToken();
         const config : AxiosRequestConfig = {
             headers: {
@@ -27,7 +27,7 @@ export default class ConnectionAPI {
 
         }
     }
-    static async connect<T>(url: string, method: MetgoType, body?: unknown): Promise<T>{
+    static async connect<T, B = unknown >(url: string, method: MetgoType, body?: B): Promise<T>{
         return this.call<T>(url,method,body).catch((error) =>{
             if (error.response) {
                 switch (error.response.status) {
@@ -45,15 +45,15 @@ export default class ConnectionAPI {
 export const connectionAPIGet = async <T>(url: string): Promise<T> =>{
     return ConnectionAPI.connect(url, MethodEnum.GET);
   };
-export const connectionAPIPost = async <T>(url: string, body: unknown): Promise<T> =>{
+export const connectionAPIPost = async <T, B = unknown>(url: string, body: B): Promise<T> =>{
     return ConnectionAPI.connect(url, MethodEnum.POST, body);
   };
-export const connectionAPIDelete = async <T>(url: string): Promise<T> =>{
+export const connectionAPIDelete = async <T>(url: string ): Promise<T> =>{
     return ConnectionAPI.connect(url, MethodEnum.DELETE);
   };
-export const connectionAPIPut = async <T>(url: string): Promise<T> =>{
-    return ConnectionAPI.connect(url, MethodEnum.PUT);
+export const connectionAPIPut = async <T, B = unknown>(url: string, body: B): Promise<T> =>{
+    return ConnectionAPI.connect(url, MethodEnum.PUT, body);
   };
-export const connectionAPIPatch = async <T>(url: string): Promise<T> =>{
-    return ConnectionAPI.connect(url, MethodEnum.PATCH);
+export const connectionAPIPatch = async <T, B = unknown >(url: string, body: B): Promise<T> =>{
+    return ConnectionAPI.connect(url, MethodEnum.PATCH, body);
   };

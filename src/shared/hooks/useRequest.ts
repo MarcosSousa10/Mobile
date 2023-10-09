@@ -9,11 +9,11 @@ import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/
 // import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { MenuUrl } from '../enums/MenuUrl.wnum';
 import { setAuthorizationToken } from '../functions/connection/auth';
-interface requestProps<T> {
+interface requestProps<T, B = unknown> {
   url: string;
   method: MetgoType;
   saveGlobal?: (object: T ) => void;
-  body?: unknown;
+  body?: B;
   message?: string;
 }
 
@@ -24,9 +24,9 @@ export const useRequest = () => {
     const {setModal} = useGlobalRducer();
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
-const request = async <T>({ url, method, saveGlobal, body, message }: requestProps<T>): Promise<T | undefined> =>{
+const request = async <T, B = unknown>({ url, method, saveGlobal, body, message }: requestProps<T| undefined, B>): Promise<T | undefined> =>{
   setLoading(true);
-  const returnObject: T| undefined = await ConnectionAPI.connect<T>(url, method, body).then(
+  const returnObject: T| undefined = await ConnectionAPI.connect<T, B>(url, method, body).then(
     (result)=>{
       if (saveGlobal){
         saveGlobal(result);
