@@ -13,6 +13,7 @@ import { NativeScrollEvent, NativeSyntheticEvent, ScrollView, TextInputChangeEve
 import ProductThumbnail from '../../../shared/components/productThumbnail/ProductThumbnail';
 import { ActivityIndicatorButton } from '../../../shared/components/button/button.syle';
 import { theme } from '../../../shared/themes/theme';
+import { SearchPosductConatainer, SerachProductView } from '../styles/searchProduct.style';
 export type SearchProductNavigationProp = NativeStackNavigationProp<Record<string, SearchProductParams>>;
 export interface SearchProductParams{
   search?: string;
@@ -57,13 +58,13 @@ const handelScroll = (event: NativeSyntheticEvent<NativeScrollEvent>)=>{
  }
 };
   return (
-    <>
+    <SearchPosductConatainer>
     <Input onChange={handleOnChangeinput} value={value}  iconRight='search'/>
     {searchProducts && searchProducts.data && ( 
-    <ScrollView onScroll={handelScroll}>{searchProducts.data.map((product) => <ProductThumbnail product={product}/>)}</ScrollView>
+    <ScrollView onScroll={handelScroll}> <SerachProductView>{searchProducts.data.map((product) => <ProductThumbnail margin='4px 0px' product={product}/>)}</SerachProductView></ScrollView>
     )}
     {loading && <ActivityIndicatorButton color={theme.colors.mainTheme.primary}/>}
-    </>
+    </SearchPosductConatainer>
   );
 };
 export default SearchProduct;

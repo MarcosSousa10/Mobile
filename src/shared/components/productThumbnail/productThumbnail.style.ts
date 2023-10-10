@@ -8,7 +8,7 @@ interface ContainerProps {
 export const ProductThumbernailContainer = styled.TouchableOpacity<ContainerProps>`
   height: 172px;
   border-radius: 4px;
-  width: 120px;
+  width: 144px;
   border: 1px solid ${theme.colors.grayTheme.gray80};
   padding: 8px;
   margin: ${(props: { margin: any; }) => props.margin || '0px'};
@@ -21,7 +21,7 @@ export const ProductImage = styled.Image`
  border-radius: 4px;
 `;
 export const ProductInsertCart = styled.TouchableOpacity`
-width: 118px;
+width: 142px;
 background-color: ${theme.colors.mainTheme.primary};
 align-items: center;
 justify-content: center;
